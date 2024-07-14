@@ -1,0 +1,20 @@
+
+header{
+    display: flex;
+    align-items: center;
+}
+.ascii-art, pre{
+    font-size: 0.3rem;
+}
+
+#my-info{
+    margin-top: 1rem;
+}
+.neo-info{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
