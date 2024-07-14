@@ -1,0 +1,21 @@
+#prompt{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+.prompt-input{
+    display: flex;
+    flex-direction: row;
+}
+.user-input{
+    flex-grow: 2;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    margin-left: 0.5rem;
+    color: green;
+}
+
+.prompt-icon{
+    flex-grow: 0;
+}
