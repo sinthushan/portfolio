@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NeofetchComponent } from "./neofetch/neofetch.component";
 import { PromptComponent } from "./prompt/prompt.component";
+import { FileSystemService } from './prompt/folders/folders.service';
 
 @Component({
   selector: 'app-terminal',
@@ -10,5 +11,5 @@ import { PromptComponent } from "./prompt/prompt.component";
   styleUrl: './terminal.component.css'
 })
 export class TerminalComponent {
-
+  constructor(public folderservice: FileSystemService) {}
 }
