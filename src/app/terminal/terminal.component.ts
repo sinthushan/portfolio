@@ -11,5 +11,10 @@ import { FileSystemService } from './prompt/folders/folders.service';
   styleUrl: './terminal.component.css'
 })
 export class TerminalComponent {
+  terminal_output: any
   constructor(public folderservice: FileSystemService) {}
+  
+  runCMD(argv: string){
+    this.terminal_output = this.folderservice.runCommand(argv)
+  }
 }

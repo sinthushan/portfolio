@@ -4,5 +4,6 @@
     <div class="toolbar-icon minimize">-</div>
    </div>
     <app-neofetch/>
-   <app-prompt [fileStructure]=folderservice/>
+   <app-prompt [fileStructure]=folderservice (cmd)="runCMD($event)"/>
+   {{terminal_output}}
 </div>

@@ -51,7 +51,7 @@ export class FileSystemService{
         this.current_directory = this.home_folder
     }
     
-    change_directory(path: string): Folder {
+    change_directory(path: string) {
         let starting_directory = this.current_directory
         let folders: string[] = path.split("/")
         folders.forEach((folder) => {
@@ -74,7 +74,6 @@ export class FileSystemService{
             }
 
         })
-        return this.current_directory
     }
 
     presentWorkingDirectory(): string{
@@ -114,6 +113,26 @@ export class FileSystemService{
             return folder_schema
         }
        
+    }
+
+    runCommand(cmd: string):  String | FolderList[]{
+       
+        let args = cmd.split(' ')
+        switch (args[0])  {
+            case 'cd': 
+                if (args.length > 1){
+                    this.change_directory(args[1]);
+                    return ""
+                }else{
+                    return "No path given"
+                }
+            case 'pwd': 
+                return this.presentWorkingDirectory();
+            case 'ls': 
+                return this.list();
+            default:
+                return "No matching commad found"
+        }
     }
 
 
