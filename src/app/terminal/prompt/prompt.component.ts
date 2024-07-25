@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Folder } from './folders/folders.models';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FileSystemService } from './folders/folders.service';
 import { FormsModule } from '@angular/forms';
 
@@ -10,12 +9,21 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './prompt.component.html',
   styleUrl: './prompt.component.css'
 })
-export class PromptComponent {
+export class PromptComponent{
+ 
   @Input({required: true}) fileStructure!: FileSystemService;
   @Output() cmd = new EventEmitter<string>();
   argv = '';
-  
+  @ViewChild('cmd') promptcmd!: ElementRef;
+
+
+
   onEnter(){
+    this.promptcmd.nativeElement.value = ''
     this.cmd.emit(this.argv)
+    this.promptcmd.nativeElement.focus()
+  }
+  onBlur(){
+    this.promptcmd.nativeElement.focus()
   }
 }

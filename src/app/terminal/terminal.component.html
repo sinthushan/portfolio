@@ -3,7 +3,7 @@
     <div class="toolbar-icon close">x</div>
     <div class="toolbar-icon minimize">-</div>
    </div>
-    <app-neofetch/>
-   <app-prompt [fileStructure]=folderservice (cmd)="runCMD($event)"/>
-   {{terminal_output}}
+    <app-neofetch disabled/>
+    <app-output [terminal_output]=terminal_output disabled/> 
+    <app-prompt [fileStructure]=folderservice (cmd)="runCMD($event)"/>
 </div>

@@ -1,0 +1,16 @@
+
+    @for (output of terminal_output; track output) {
+        <div id="prompt">
+        <div class="file-path">{{output.path}}</div>
+        <div class="prompt-input">
+            <span class="prompt-icon">$</span>
+            <div class="prompt-output">{{output.cmd}}</div>
+        </div>
+            @for (item of output.output; track item) {
+                <div class="prompt-output">
+                    <p>{{item}}</p>
+                </div>
+            }
+        </div>
+    }
+

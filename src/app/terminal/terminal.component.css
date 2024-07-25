@@ -19,10 +19,10 @@
 }
 
 .toolbar-icon{
-    height: 50%;
-    width: 1rem;
-    border-radius: 60%;
-    margin: 0rem 0.3rem;
+    height: 0.751rem;
+    width: 0.75rem;
+    border-radius: 50%;
+    margin: 0rem 0.2rem;
     text-align: center;
     font-size: x-small;
     font-weight: bold;
@@ -31,12 +31,21 @@
 
 .close{
     background-color: red;
+    color: red;
     cursor: pointer;
+}
+.close:hover{
+    color: rgb(134, 3, 3);
 }
 
 .minimize{
     background-color: rgb(255, 183, 0);
+    color:  rgb(255, 183, 0);
     cursor: pointer;
+}
+
+.minimize:hover{
+    color:  rgb(142, 103, 2);
 }
 
 ::ng-deep a:link {

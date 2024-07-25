@@ -76,28 +76,22 @@ export class FileSystemService{
         })
     }
 
-    presentWorkingDirectory(): string{
+    presentWorkingDirectory(): string[]{
         let path_folder = this.current_directory
         let path_str = ""
         while (path_folder.parent){
             path_str = path_folder.name + '/' + path_str
             path_folder = path_folder.parent
         }
-        return path_folder.name + '/' + path_str
+        return [path_folder.name + '/' + path_str]
     }
-    list(): FolderList[]{
-        let folder_list: FolderList[] = []
+    list(): string[]{
+        let folder_list: string[] = []
         if (this.current_directory.folders){
-            this.current_directory.folders.forEach((folder: Folder) => folder_list.push({
-                type: "folder",
-                name: folder.name
-            }))
+            this.current_directory.folders.forEach((folder: Folder) => folder_list.push(folder.name))
         }
         if (this.current_directory.files){
-            this.current_directory.files.forEach((file: File) => folder_list.push({
-                type: "file",
-                name: file.name
-            }))
+            this.current_directory.files.forEach((file: File) => folder_list.push(file.name))
         }
         return folder_list
     } 
@@ -115,23 +109,23 @@ export class FileSystemService{
        
     }
 
-    runCommand(cmd: string):  String | FolderList[]{
+    runCommand(cmd: string):  string[]{
        
         let args = cmd.split(' ')
         switch (args[0])  {
             case 'cd': 
                 if (args.length > 1){
                     this.change_directory(args[1]);
-                    return ""
+                    return [""]
                 }else{
-                    return "No path given"
+                    return ["No path given"]
                 }
             case 'pwd': 
                 return this.presentWorkingDirectory();
             case 'ls': 
                 return this.list();
             default:
-                return "No matching commad found"
+                return ["No matching commad found"]
         }
     }
 
