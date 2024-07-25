@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Folder, File, FolderList } from "./folders.models";
-
+import { Folder, File} from "./folders.models";
+import { folder_schema } from "./folderschema";
 
 @Injectable({providedIn: "root"})
 export class FileSystemService{
@@ -8,45 +8,7 @@ export class FileSystemService{
     home_folder: Folder
     folder_schema: Folder
     constructor(){
-        this.folder_schema = {
-                name: 'home',
-                folders: [
-                    {
-                        name: "projects",
-                        files: [
-                            {
-                                name: 'secret1.py',
-                                href: 'projects/secret1.py'
-                            },
-                            {
-                                name: 'secret1.py',
-                                href: 'projects/secret1/secret1.py'
-                            },
-                            {
-                                name: 'secret1.py',
-                                href: 'projects/secret1/secret1.py'
-                            }
-                        ]
-                    },
-                    {
-                        name: "Blog",
-                        files: [
-                            {
-                                name: 'Blog Post 1',
-                                href: 'blog/blog_post_1'
-                            },
-                            {
-                                name: 'Blog Post 2',
-                                href: 'blog/blog_post_2'
-                            },
-                            {
-                                name: 'Blog Post 3',
-                                href: 'blog/blog_post_3'
-                            }
-                        ]
-                    },
-                ],
-            }
+        this.folder_schema = folder_schema
         this.home_folder = this.makeFromSchema(this.folder_schema)
         this.current_directory = this.home_folder
     }
@@ -94,7 +56,11 @@ export class FileSystemService{
             this.current_directory.files.forEach((file: File) => folder_list.push(file.name))
         }
         return folder_list
-    } 
+    }
+    
+    cat(href: string){
+        window.open(href)
+    }
 
     makeFromSchema(folder_schema: Folder, parent?: Folder) : Folder{
         if (folder_schema.folders){
@@ -115,15 +81,26 @@ export class FileSystemService{
         switch (args[0])  {
             case 'cd': 
                 if (args.length > 1){
-                    this.change_directory(args[1]);
-                    return [""]
+                    let subfolders = this.current_directory.folders?.filter((subfolder: Folder) => subfolder.name == args[1])
+                    if (subfolders?.length) {
+                        this.change_directory(args[1]);
+                        return [""]
+                    }
+                    return ["Bad file path"]
                 }else{
-                    return ["No path given"]
+                    return ["No path argument was given"]
                 }
             case 'pwd': 
                 return this.presentWorkingDirectory();
             case 'ls': 
                 return this.list();
+            case 'cat':
+                let files = this.current_directory.files?.filter((file: File) => file.name == args[1])
+                if (files?.length) {
+                    this.cat(files[0].href)
+                    return [""]
+                }
+                return ["No such file was found in directory"]
             default:
                 return ["No matching commad found"]
         }

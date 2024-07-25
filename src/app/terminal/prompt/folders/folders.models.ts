@@ -9,8 +9,3 @@ export interface Folder{
     parent?: Folder
     files?: File[];
 }
-
-export interface FolderList{
-    type: string;
-    name: string;
-}
