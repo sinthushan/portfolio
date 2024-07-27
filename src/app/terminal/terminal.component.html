@@ -1,9 +1,9 @@
-<div id="terminal">
+<div #terminal id="terminal">
    <div class="toolbar">
     <div class="toolbar-icon close">x</div>
     <div class="toolbar-icon minimize">-</div>
    </div>
     <app-neofetch/>
     <app-output [terminal_output]=terminal_output/> 
-    <app-prompt [fileStructure]=folderservice (cmd)="runCMD($event)"/>
+    <app-prompt [fileStructure]=folderservice (cmd)="runCMD($event)"  (terminalGrow)="scrollDown()"/>
 </div>

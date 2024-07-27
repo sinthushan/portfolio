@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FileSystemService } from './folders/folders.service';
 import { FormsModule } from '@angular/forms';
 
@@ -9,14 +9,20 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './prompt.component.html',
   styleUrl: './prompt.component.css'
 })
-export class PromptComponent{
+export class PromptComponent implements AfterViewChecked{
  
   @Input({required: true}) fileStructure!: FileSystemService;
+  
   @Output() cmd = new EventEmitter<string>();
+
+  @Output() terminalGrow = new EventEmitter<void>()
+
   argv = '';
   @ViewChild('cmd') promptcmd!: ElementRef;
 
-
+  ngAfterViewChecked(): void {
+    this.terminalGrow.emit()
+  }
 
   onEnter(){
     this.promptcmd.nativeElement.value = ''

@@ -6,15 +6,15 @@ export const folder_schema = {
             name: "projects",
             files: [
                 {
-                    name: 'Work_Queue_(WIP)',
+                    name: 'Work_Queue_(WIP).git',
                     href: 'https://github.com/sinthushan/work_queue'
                 },
                 {
-                    name: 'Happily_Ever_Prints',
+                    name: 'Happily_Ever_Prints.git',
                     href: 'github.com/weddingprintproj3/HappilyEverPrints'
                 },
                 {
-                    name: 'Share_CamGear',
+                    name: 'Share_CamGear.git',
                     href: 'github.com/proj2team5/rent_my_stuff'
                 }
             ]
@@ -37,4 +37,10 @@ export const folder_schema = {
             ]
         },
     ],
+    files: [
+        {
+            name: 'Resume.txt',
+            href: ''
+        }
+    ]
 }

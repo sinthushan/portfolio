@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Folder, File} from "./folders.models";
 import { folder_schema } from "./folderschema";
+import { resume } from "./resume";
 
 @Injectable({providedIn: "root"})
 export class FileSystemService{
@@ -96,11 +97,21 @@ export class FileSystemService{
                 return this.list();
             case 'cat':
                 let files = this.current_directory.files?.filter((file: File) => file.name == args[1])
+                console.log(files)
+                console.log(args[1])
                 if (files?.length) {
-                    this.cat(files[0].href)
-                    return [""]
+                    if (args[1] == 'Resume.txt'){
+                      let data =  resume
+                      return [data]
+                    }else{
+                        this.cat(files[0].href)
+                        return [""]
+                    }
+                   
+                } else{
+                    return ["No such file was found in directory"]
                 }
-                return ["No such file was found in directory"]
+                
             default:
                 return ["No matching commad found"]
         }

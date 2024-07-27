@@ -8,7 +8,7 @@
         </div>
             @for (item of output.output; track item) {
                 <div class="prompt-output">
-                    <p>{{item}}</p>
+                    <p [innerHTML]="item"></p>
                 </div>
             }
         </div>

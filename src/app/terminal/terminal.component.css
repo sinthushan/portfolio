@@ -4,6 +4,7 @@
     background-color: rgb(32, 41, 55);
     color:rgb(2, 187, 52);
     border-radius : 4px;
+    overflow-y: auto
 }
 
 .toolbar{
