@@ -11,11 +11,11 @@ export const folder_schema = {
                 },
                 {
                     name: 'Happily_Ever_Prints.git',
-                    href: 'github.com/weddingprintproj3/HappilyEverPrints'
+                    href: 'https://github.com/weddingprintproj3/HappilyEverPrints'
                 },
                 {
                     name: 'Share_CamGear.git',
-                    href: 'github.com/proj2team5/rent_my_stuff'
+                    href: 'https://github.com/proj2team5/rent_my_stuff'
                 }
             ]
         },

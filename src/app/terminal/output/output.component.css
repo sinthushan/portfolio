@@ -6,12 +6,14 @@
 .prompt-input{
     display: flex;
     flex-direction: row;
+    font-weight: bold;
 }
 
 .prompt-output{
     flex-grow: 2;
     margin-left: 0.5rem;
-    color: green;
+    color: rgb(79, 208, 251);
+    font-weight: bold;
 }
 
 .prompt-output>p{

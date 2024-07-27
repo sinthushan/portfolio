@@ -1,10 +1,11 @@
 #terminal{
-    width: 100%;
+    width: 70%;
     height: 100%;
-    background-color: rgb(32, 41, 55);
-    color:rgb(2, 187, 52);
+    background-color: rgba(20, 58, 68, 0.561);
+    color:rgb(130, 215, 254);
     border-radius : 4px;
-    overflow-y: auto
+    overflow-y: auto;
+    box-shadow: -10px -5px 5px rgb(0, 33, 32);;
 }
 
 .toolbar{
@@ -12,7 +13,7 @@
     align-items: center;
     height: 1.3rem;
     width: 100%;
-    background-color: rgb(4, 1, 39);
+    background-color: rgba(1, 39, 64, 0.517);
     margin: 0;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -40,13 +41,13 @@
 }
 
 .minimize{
-    background-color: rgb(255, 183, 0);
-    color:  rgb(255, 183, 0);
+    background-color: rgb(77, 255, 0);
+    color:  rgb(77, 255, 0);
     cursor: pointer;
 }
 
 .minimize:hover{
-    color:  rgb(142, 103, 2);
+    color:  rgb(5, 93, 2);
 }
 
 ::ng-deep a:link {
@@ -62,19 +63,19 @@
 
 ::ng-deep a:focus {
     text-decoration: none;
-    background: #bae498;
+    background: #98e4de;
 }
 
 ::ng-deep a:hover {
     text-decoration: none;
-    background: #cdfeaa;
+    background: #aaf7fe;
 }
 
 ::ng-deep a:active {
     
     text-decoration: none;
-    background: #11ff00;
-    color: #cdfeaa;
+    background: #00ddff;
+    color: #aaf4fe;
 }
 
 ::ng-deep .white{
