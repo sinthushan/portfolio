@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, Component, ElementRef, ViewChild } from '@angular/core';
 import { NeofetchComponent } from "./neofetch/neofetch.component";
 import { PromptComponent } from "./prompt/prompt.component";
 import { FileSystemService } from './prompt/folders/folders.service';
@@ -21,16 +21,12 @@ export class TerminalComponent{
   
   @ViewChild('terminal') terminal_div!: ElementRef;
 
+
   runCMD(argv: string){
-    this.terminal_output.push(
-      {
-        path: this.folderservice.presentWorkingDirectory()[0],
-        cmd: argv,
-        output: this.folderservice.runCommand(argv)
-      }
-    )
-   
+    this.terminal_output = this.folderservice.runCommand(argv)
+
   }
+
   scrollDown(){
     this.terminal_div.nativeElement.scrollTop = this.terminal_div.nativeElement.scrollHeight; 
   }

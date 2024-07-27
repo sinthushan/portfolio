@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input,  Output,  ViewChild } from '@angular/core';
 import { FileSystemService } from './folders/folders.service';
 import { FormsModule } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './prompt.component.html',
   styleUrl: './prompt.component.css'
 })
-export class PromptComponent implements AfterViewChecked{
+export class PromptComponent  {
  
   @Input({required: true}) fileStructure!: FileSystemService;
   
@@ -20,16 +20,35 @@ export class PromptComponent implements AfterViewChecked{
   argv = '';
   @ViewChild('cmd') promptcmd!: ElementRef;
 
-  ngAfterViewChecked(): void {
-    this.terminalGrow.emit()
-  }
+  cmdList: string[] = ['']
+
 
   onEnter(){
     this.promptcmd.nativeElement.value = ''
+    this.cmdList.push(this.argv)
     this.cmd.emit(this.argv)
     this.promptcmd.nativeElement.focus()
+    setTimeout(() => {
+      this.terminalGrow.emit()
+    }, 100);
   }
-  onBlur(){
-    this.promptcmd.nativeElement.focus()
+
+  onUpArrow(){
+    if (this.cmdList.length > 0) {
+      let lastCMD: string =  this.cmdList.pop() as string;
+      this.promptcmd.nativeElement.value = lastCMD.trim()
+      this.cmdList.unshift(lastCMD)
+    }
+   
   }
+
+  onDownArrow(){
+    if (this.cmdList.length > 0) {
+      let firstCMD: string =  this.cmdList.shift() as string;
+      this.promptcmd.nativeElement.value = firstCMD.trim()
+      this.cmdList.push(firstCMD)
+    }
+   
+  }
+
 }

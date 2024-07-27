@@ -1,11 +1,15 @@
 #terminal{
-    width: 70%;
+    width: 61%;
     height: 100%;
-    background-color: rgba(20, 58, 68, 0.561);
+    margin-top: 2rem;
+    background-color: rgba(45, 123, 145, 0.561);
     color:rgb(130, 215, 254);
     border-radius : 4px;
     overflow-y: auto;
-    box-shadow: -10px -5px 5px rgb(0, 33, 32);;
+    scrollbar-color: rgb(0, 157, 255) rgba(130, 215, 254, 0);
+    scrollbar-width: thin;
+    scroll-margin-top: 10rem;
+    box-shadow: 0px 5px 10px 2px  rgb(7, 7, 7);
 }
 
 .toolbar{
@@ -13,11 +17,14 @@
     align-items: center;
     height: 1.3rem;
     width: 100%;
-    background-color: rgba(1, 39, 64, 0.517);
+    background-color: rgb(1, 39, 64);
     margin: 0;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-
+    position: sticky;
+    top: 0px;
+    box-shadow: 0px 1px 7px 1px  rgb(0, 33, 32);
+    z-index: 99999;
 }
 
 .toolbar-icon{

@@ -2,6 +2,6 @@
     <div class="file-path">{{fileStructure.presentWorkingDirectory()}}</div>
     <div class="prompt-input">
         <span class="prompt-icon">$</span>
-        <input #cmd type="text" class="user-input" [(ngModel)]="argv" (keydown.enter)="onEnter()" (blur)="onBlur()"  autofocus/>
+        <input #cmd type="text" class="user-input" [(ngModel)]="argv" (keydown.enter)="onEnter()" (keydown.arrowup)="onUpArrow()" (keydown.arrowdown)="onDownArrow()" autofocus/>
     </div>
 </div>

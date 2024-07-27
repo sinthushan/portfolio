@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { Folder, File} from "./folders.models";
 import { folder_schema } from "./folderschema";
 import { resume } from "./resume";
+import { PromptOutput } from "../../output/output.model";
 
 @Injectable({providedIn: "root"})
 export class FileSystemService{
     current_directory: Folder
     home_folder: Folder
     folder_schema: Folder
+    terminal_output: PromptOutput[] = []
     constructor(){
         this.folder_schema = folder_schema
         this.home_folder = this.makeFromSchema(this.folder_schema)
@@ -76,46 +78,66 @@ export class FileSystemService{
        
     }
 
-    runCommand(cmd: string):  string[]{
-       
+    runCommand(cmd: string): PromptOutput[] {
+        let output: string[] = []
         let args = cmd.split(' ')
         switch (args[0])  {
             case 'cd': 
                 if (args.length > 1){
                     let subfolders = this.current_directory.folders?.filter((subfolder: Folder) => subfolder.name == args[1])
-                    if (subfolders?.length) {
+                    if (subfolders?.length || args[1] === '..') {
                         this.change_directory(args[1]);
-                        return [""]
+                        output =  [""]
+                        break;
+                    }else{
+                        output =  ["Bad file path"]
+                        break;
                     }
-                    return ["Bad file path"]
                 }else{
-                    return ["No path argument was given"]
+                    output =  ["No path argument was given"]
+                    break;
                 }
             case 'pwd': 
-                return this.presentWorkingDirectory();
+                output =  this.presentWorkingDirectory();
+                break;
             case 'ls': 
-                return this.list();
+                output =  this.list();
+                break;
             case 'cat':
                 let files = this.current_directory.files?.filter((file: File) => file.name == args[1])
-                console.log(files)
-                console.log(args[1])
                 if (files?.length) {
                     if (args[1] == 'Resume.txt'){
                       let data =  resume
-                      return [data]
+                      output =  [data]
+                      break;
                     }else{
                         this.cat(files[0].href)
-                        return [""]
+                        output =  [""]
+                        break;
                     }
                    
                 } else{
-                    return ["No such file was found in directory"]
+                    output =  ["No such file was found in directory"]
+                    break;
                 }
-                
+            case 'clear': 
+                if (args.length > 1){
+                    output =  ["clear command does not take in any arguments"]
+                    break;
+                }
+                this.terminal_output = []
+                return this.terminal_output  
             default:
-                return ["No matching commad found"]
+                output =  ["No matching commad found"]
         }
+        this.terminal_output.push(
+            {
+                path: this.presentWorkingDirectory()[0],
+                cmd: cmd,
+                output: output
+            }
+        )
+        return this.terminal_output
     }
-
 
 }

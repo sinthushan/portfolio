@@ -5,5 +5,5 @@
    </div>
     <app-neofetch/>
     <app-output [terminal_output]=terminal_output/> 
-    <app-prompt [fileStructure]=folderservice (cmd)="runCMD($event)"  (terminalGrow)="scrollDown()"/>
+    <app-prompt  [fileStructure]=folderservice (cmd)="runCMD($event)"  (terminalGrow)="scrollDown()"/>
 </div>
