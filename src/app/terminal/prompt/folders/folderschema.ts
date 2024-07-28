@@ -1,9 +1,9 @@
 
 export const folder_schema = {
-    name: 'home',
+    name: 'Home',
     folders: [
         {
-            name: "projects",
+            name: "Projects",
             files: [
                 {
                     name: 'Work_Queue_(WIP).git',

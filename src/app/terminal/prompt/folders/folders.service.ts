@@ -3,6 +3,7 @@ import { Folder, File} from "./folders.models";
 import { folder_schema } from "./folderschema";
 import { resume } from "./resume";
 import { PromptOutput } from "../../output/output.model";
+import { help } from "./help";
 
 @Injectable({providedIn: "root"})
 export class FileSystemService{
@@ -81,6 +82,7 @@ export class FileSystemService{
     runCommand(cmd: string): PromptOutput[] {
         let output: string[] = []
         let args = cmd.split(' ')
+        let starting_directory =  this.presentWorkingDirectory()[0]
         switch (args[0])  {
             case 'cd': 
                 if (args.length > 1){
@@ -126,13 +128,21 @@ export class FileSystemService{
                     break;
                 }
                 this.terminal_output = []
-                return this.terminal_output  
+                return this.terminal_output
+            case 'help':
+                if (args.length > 1){
+                    output =  ["clear command does not take in any arguments"]
+                    break;
+                }
+                let data =  help
+                output =  [data]
+                break;
             default:
                 output =  ["No matching commad found"]
         }
         this.terminal_output.push(
             {
-                path: this.presentWorkingDirectory()[0],
+                path: starting_directory,
                 cmd: cmd,
                 output: output
             }

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Xanh+Mono:ital@0;1&display=swap');
+.topbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    height: 1.5rem;
+    background-color: rgba(104, 19, 132, 0.827);
+    color: aliceblue;
+    box-shadow: 0px 1px 7px 3px  rgb(201, 40, 255);
+    font-size: small;
+    font-family: "Xanh Mono", monospace;
+}
+
+.topbar>div{
+    padding: 0.2rem 1rem;
+}
+
+.bartitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

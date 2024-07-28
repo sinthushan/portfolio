@@ -1,5 +1,8 @@
 <div id="prompt">
-    <div class="file-path">{{fileStructure.presentWorkingDirectory()}}</div>
+    <div class="file-path-container">
+        <i class="nf nf-cod-terminal_bash"></i>
+        <div class="file-path"> {{fileStructure.presentWorkingDirectory()}}</div>
+    </div>
     <div class="prompt-input">
         <span class="prompt-icon">$</span>
         <input #cmd type="text" class="user-input" [(ngModel)]="argv" (keydown.enter)="onEnter()" (keydown.arrowup)="onUpArrow()" (keydown.arrowdown)="onDownArrow()" autofocus/>

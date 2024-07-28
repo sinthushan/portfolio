@@ -1,7 +1,10 @@
 
     @for (output of terminal_output; track output) {
         <div id="prompt">
-        <div class="file-path">{{output.path}}</div>
+        <div class="file-path-container">
+            <i class="nf nf-cod-terminal_bash"></i>
+            <div class="file-path"> {{output.path}}</div>
+        </div>    
         <div class="prompt-input">
             <span class="prompt-icon">$</span>
             <div class="prompt-output">{{output.cmd}}</div>

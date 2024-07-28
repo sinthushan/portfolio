@@ -28,12 +28,15 @@
 }
 
 .toolbar-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 0.751rem;
     width: 0.75rem;
     border-radius: 50%;
     margin: 0rem 0.2rem;
     text-align: center;
-    font-size: x-small;
+    font-size: 0.5rem;
     font-weight: bold;
     color: white;
 }
@@ -44,7 +47,7 @@
     cursor: pointer;
 }
 .close:hover{
-    color: rgb(134, 3, 3);
+    color: rgb(141, 3, 3);
 }
 
 .minimize{
@@ -55,6 +58,11 @@
 
 .minimize:hover{
     color:  rgb(5, 93, 2);
+}
+
+.help{
+    margin-top: 2rem;
+    margin-left: 2rem;
 }
 
 ::ng-deep a:link {
