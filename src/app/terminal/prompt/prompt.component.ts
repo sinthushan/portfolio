@@ -24,9 +24,9 @@ export class PromptComponent  {
 
 
   onEnter(){
-    this.promptcmd.nativeElement.value = ''
     this.cmdList.push(this.argv)
     this.cmd.emit(this.argv)
+    this.promptcmd.nativeElement.value = ''
     this.promptcmd.nativeElement.focus()
     setTimeout(() => {
       this.terminalGrow.emit()
@@ -36,7 +36,7 @@ export class PromptComponent  {
   onUpArrow(){
     if (this.cmdList.length > 0) {
       let lastCMD: string =  this.cmdList.pop() as string;
-      this.promptcmd.nativeElement.value = lastCMD.trim()
+      this.argv = lastCMD.trim()
       this.cmdList.unshift(lastCMD)
     }
    
@@ -45,7 +45,7 @@ export class PromptComponent  {
   onDownArrow(){
     if (this.cmdList.length > 0) {
       let firstCMD: string =  this.cmdList.shift() as string;
-      this.promptcmd.nativeElement.value = firstCMD.trim()
+      this.argv = firstCMD.trim()
       this.cmdList.push(firstCMD)
     }
    
