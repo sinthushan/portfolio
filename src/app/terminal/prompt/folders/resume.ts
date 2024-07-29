@@ -3,7 +3,8 @@ export const resume = `
 Sinthushan Sooriyakumar
 Toronto ON., 1503 Midland Ave. M1P 0A1
 Phone: 416-278-0956 | Email: sinthushan@gmail.com
-LinkedIn: https://linkedin.com/in/sinthushan-sooriyakumar-58368a22/ | GitHub: https://github.com/sinthushan
+LinkedIn: https://linkedin.com/in/sinthushan-sooriyakumar-58368a22/ 
+GitHub: https://github.com/sinthushan
 
 
 SUMMARY

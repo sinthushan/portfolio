@@ -20,10 +20,12 @@ export class PromptComponent  {
   argv = '';
   @ViewChild('cmd') promptcmd!: ElementRef;
 
-  cmdList: string[] = ['']
-
+  cmdList: string[] = []
+  arrowDirection: string = ''
+  arrowPressCount = 0
 
   onEnter(){
+    this.arrowPressCount = 0
     this.cmdList.push(this.argv)
     this.cmd.emit(this.argv)
     this.promptcmd.nativeElement.value = ''
@@ -34,19 +36,41 @@ export class PromptComponent  {
   }
 
   onUpArrow(){
+    if (this.arrowDirection != "Up"){
+      this.arrowPressCount = 0
+      this.arrowDirection = "Up"
+    }
     if (this.cmdList.length > 0) {
-      let lastCMD: string =  this.cmdList.pop() as string;
-      this.argv = lastCMD.trim()
-      this.cmdList.unshift(lastCMD)
+      this.arrowPressCount += 1
+      if (this.arrowPressCount > this.cmdList.length){
+        this.argv = ''
+        this.arrowPressCount = 0
+      }else{
+        let lastCMD: string =  this.cmdList.pop() as string;
+        this.argv = lastCMD.trim()
+        this.cmdList.unshift(lastCMD)
+      }
+     
     }
    
   }
 
   onDownArrow(){
+    if (this.arrowDirection != "Down"){
+      this.arrowPressCount = 0
+      this.arrowDirection = "Down"
+    }
     if (this.cmdList.length > 0) {
-      let firstCMD: string =  this.cmdList.shift() as string;
-      this.argv = firstCMD.trim()
-      this.cmdList.push(firstCMD)
+      this.arrowPressCount += 1
+      if (this.arrowPressCount > this.cmdList.length){
+        this.argv = ''
+        this.arrowPressCount = 0
+      }else{
+        let firstCMD: string =  this.cmdList.shift() as string;
+        this.argv = firstCMD.trim()
+        this.cmdList.push(firstCMD)
+      }
+     
     }
    
   }

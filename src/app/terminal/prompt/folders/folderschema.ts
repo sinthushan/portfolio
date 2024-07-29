@@ -21,20 +21,7 @@ export const folder_schema = {
         },
         {
             name: "Blog",
-            files: [
-                {
-                    name: 'Blog Post 1',
-                    href: 'blog/blog_post_1'
-                },
-                {
-                    name: 'Blog Post 2',
-                    href: 'blog/blog_post_2'
-                },
-                {
-                    name: 'Blog Post 3',
-                    href: 'blog/blog_post_3'
-                }
-            ]
+            files: []
         },
     ],
     files: [

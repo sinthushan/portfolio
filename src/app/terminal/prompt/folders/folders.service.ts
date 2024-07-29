@@ -59,6 +59,9 @@ export class FileSystemService{
         if (this.current_directory.files){
             this.current_directory.files.forEach((file: File) => folder_list.push(file.name))
         }
+        if (folder_list.length === 0){
+            folder_list = ["-- This folder is empty --"]
+        }
         return folder_list
     }
     
