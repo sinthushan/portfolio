@@ -1,10 +1,14 @@
-<div #terminal id="terminal">
-   <div class="toolbar">
+<div class="toolbar">
     <div class="toolbar-icon close"><i class="nf nf-fa-close"></i></div>
     <div class="toolbar-icon minimize"><i class="nf nf-fae-minimize"></i></div>
    </div>
+<div #terminal id="terminal">
+
+
     <app-neofetch/>
     <div class="help">Type "help" to see the available commands</div>
     <app-output [terminal_output]=terminal_output/> 
     <app-prompt  [fileStructure]=folderservice (cmd)="runCMD($event)"  (terminalGrow)="scrollDown()"/>
+
+   
 </div>

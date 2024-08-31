@@ -19,7 +19,7 @@
 
 .nf{
     color: rgb(255, 255, 255);
-    background-color: rgb(61, 168, 234);
+    background-color: #3a5a40;
     padding: 0 0.2rem;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -27,7 +27,7 @@
 
 .file-path{
     width: fit-content;
-    background:linear-gradient(90deg, rgb(4, 166, 235) 0%, rgb(46, 171, 220) 35%, rgba(231, 251, 255, 0.646) 100%);
+    background:linear-gradient(90deg, #3a5a40 0%, #588157 35%, #a3b18a 100%);
     padding: 0 2rem 0 1rem;
     margin-left: 0;
     font-weight: bold;
@@ -40,7 +40,7 @@
     outline: none;
     border: none;
     margin-left: 0.5rem;
-    color: rgb(79, 208, 251);
+    color:#a3b18a;
     font-weight: bold;
    
 }

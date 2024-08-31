@@ -3,7 +3,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("/assets/wallpaper7.png");
+    background-image: url("/assets/image_fx_tree.png");
     background-size:100% 100%;
 }
 
